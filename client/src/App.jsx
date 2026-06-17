@@ -3,13 +3,12 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import useAuth from './hooks/useAuth';
 
-// ייבוא הרכיבים והעמודים שלכן
 import Navbar from './components/shared/Navbar';
 import AuthForm from './components/auth/AuthForm';
-import HomePage from './components/home/HomePage'; // חיבור דף הבית החדש והמעוצב
-import MyProfile from './components/profile/MyProfile'; // ייבוא עמוד האזור האישי החדש
-import SubscriptionPage from './components/profile/SubscriptionPage'; // 1. ייבוא
-// רכיב שומר סף (ProtectedRoute) - מונע כניסה לעמודים מוגנים ללא התחברות
+import HomePage from './components/home/HomePage';
+import MyProfile from './components/profile/MyProfile'; 
+import SubscriptionPage from './components/profile/SubscriptionPage';
+
 function ProtectedRoute({ children, allowedRoles }) {
   const { user, loading } = useAuth();
 
@@ -26,21 +25,14 @@ function ProtectedRoute({ children, allowedRoles }) {
   return children;
 }
 
-// רכיב המעטפת המרכזי של האתר
 function MainLayout() {
   return (
     <div style={{ minHeight: '100vh', background: '#fafafa' }}>
-      {/* ה-Navbar יושב כאן בבטחה בתוך המעטפת של ה-Provider */}
       <Navbar />
 
       <Routes>
-        {/* עמוד הבית הראשי של האתר - כולל את הפרסומות, המדיה ותצוגת הלוח החודשי */}
         <Route path="/" element={<HomePage />} />
-
-        {/* עמוד טופס האימות (התחברות והרשמה) */}
         <Route path="/auth" element={<AuthForm />} />
-
-        {/* האזור האישי החדש של הלקוח - מוגן ברישום */}
         <Route
           path="/profile"
           element={
@@ -49,7 +41,6 @@ function MainLayout() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/subscription"
           element={
@@ -58,14 +49,12 @@ function MainLayout() {
             </ProtectedRoute>
           }
         />
-        {/* תיקון נתיב ברירת המחדל למקרה של כתובת שגויה */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );
 }
 
-// פונקציית האפ הראשית משמשת אך ורק כמעטפת התשתית הגלובלית
 function App() {
   return (
     <BrowserRouter>

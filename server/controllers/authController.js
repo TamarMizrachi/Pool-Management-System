@@ -17,10 +17,24 @@ const AuthController = {
         try {
             const hashedPassword = await bcrypt.hash(password, 10);
 
-            await UserModel.createUser(fullName, email, hashedPassword);
+            const result = await UserModel.createUser(fullName, email, hashedPassword);
+            const newUserId = result;
 
-            return res.status(201).json({ message: 'המשתמש נרשם בהצלחה!' });
+            const token = jwt.sign(
+                { id: newUserId, fullName: fullName, role: 'client' }, 
+                JWT_SECRET, 
+                { expiresIn: '3h' } 
+            );
 
+            return res.status(201).json({
+                message: 'המשתמש נרשם בהצלחה!',
+                token: token,
+                user: {
+                    id: newUserId,
+                    fullName: fullName, 
+                    role: 'client'    
+                }
+            });
         } catch (error) {
             if (error.code === 'ER_DUP_ENTRY' || error.errno === 1062) {
                 return res.status(400).json({ message: 'האימייל הזה כבר רשום במערכת' });

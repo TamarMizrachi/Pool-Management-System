@@ -20,14 +20,12 @@ function Navbar() {
   return (
     <nav className="navbar-container">
       
-      {/* צד ימין: לוגו האתר המפנה לעמוד הבית */}
       <div className="navbar-logo">
         <Link to="/">
           <img src={logoImg} alt="PoolHub Logo" className="navbar-logo-img" />
         </Link>
       </div>
 
-      {/* מרכז: קישורי ניווט פנימיים לדף הבית - הוספנו כאן את הקישור ללוח השנה! */}
       {isHomePage && (
         <div className="navbar-internal-links">
           <a href="#about" className="nav-item">עלינו</a>

@@ -1,7 +1,8 @@
+
 .sub-page-container {
     padding: 60px 20px;
     direction: rtl;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 650px;
     margin: 0 auto;
 }
@@ -59,7 +60,7 @@
     font-weight: bold;
     cursor: pointer;
     font-size: 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
 }
 
@@ -74,4 +75,45 @@
     padding: 20px;
     border-radius: 8px;
     margin: 20px 0;
+}
+
+/* ==========================================================================
+   התאמה רספונסיבית לטלפונים ניידים ומסכים קטנים (מתחת ל-768 פיקסלים)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .sub-page-container {
+        padding: 30px 12px; /* צמצום השוליים העליונים והצדדיים להתאמה למסך קטן */
+    }
+
+    .sub-page-card {
+        padding: 4px 20px 25px 20px; /* הקטנת הריפוד הפנימי של הכרטיסייה במובייל */
+        border-radius: 12px;
+    }
+
+    .sub-alert-banner {
+        padding: 12px;
+        font-size: 0.95rem; /* גופן מעט מותאם למובייל בשלט האזהרה */
+        margin: 15px 0;
+    }
+
+    .sub-details-section {
+        padding: 18px; /* ריפוד פנימי קומפקטי יותר */
+        line-height: 1.8; /* הידוק קל של שורות הפרטים */
+        font-size: 0.95rem;
+    }
+
+    .payment-details-box {
+        padding: 15px;
+        margin: 15px 0;
+        font-size: 0.95rem;
+    }
+
+    /* הפיכת כפתורי הפעולה (למשל רכישה/ביטול) לכפתורים רחבים ונוחים בנייד */
+    .sub-action-btn {
+        width: 100%; /* נמתח לכל רוחב הכרטיסייה */
+        padding: 14px; /* גובה נוח ללחיצה באצבע */
+        margin-top: 10px; /* רווח נכון בין כפתורים אם הם אחד מתחת לשני */
+        display: block; /* מוודא שהם ירדו שורה */
+        text-align: center;
+    }
 }

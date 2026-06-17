@@ -30,6 +30,7 @@ function AuthForm() {
         navigate('/');
       } else {
         alert('הרישום בוצע בהצלחה!');
+        loginSuccess(data.token, data.user);
         navigate('/');
 
       }

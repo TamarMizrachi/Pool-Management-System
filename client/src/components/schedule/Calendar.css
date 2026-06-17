@@ -1,15 +1,13 @@
-
 /* ==========================================================================
-   1. הגדרות כלליות ומכלים עיקריים
+   1. הגדרות כלליות ומכלים עיקריים (Desktop)
    ========================================================================== */
 .schedule-section {
     padding: 60px 40px;
     background-color: #ffffff;
     direction: rtl;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* מיכל הלוח בפרישה רחבה ומרווחת */
 .full-width-calendar-container {
     max-width: 1200px;
     margin: 30px auto 0 auto;
@@ -29,9 +27,8 @@
     padding: 15px;
 }
 
-/* הגדלת גובה משבצות הימים ליצירת מראה של יומן חודשי אמיתי */
 .full-width-calendar-container .react-calendar__tile {
-    min-height: 120px; /* הגדלנו מעט ל-120px כדי שיהיה מקום נוח לכפתורי ה-span החדשים */
+    min-height: 120px; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -41,7 +38,6 @@
     vertical-align: top;
 }
 
-/* מספר היום בפינה העליונה של המשבצת */
 .full-width-calendar-container .react-calendar__tile abbr {
     font-weight: bold;
     color: #4a5568;
@@ -49,7 +45,6 @@
     font-size: 1rem;
 }
 
-/* גוון ירקרק עדין לציון היום הנוכחי (היום) */
 .full-width-calendar-container .react-calendar__tile--now {
     background: #f0fdf4 !important; 
 }
@@ -58,7 +53,6 @@
     color: #166534;
 }
 
-/* גבול כהה סביב המשבצת שנבחרה - בלי להסתיר את תוכן הפעילות */
 .full-width-calendar-container .react-calendar__tile--active {
     background: #f8fafc !important;
     border: 2px solid #03045e !important;
@@ -117,7 +111,37 @@
     width: 100%;
 }
 
-/* עיצוב הבסיס לכל ה-spans הלחיצים כדי שייראו ויתנהגו כמו כפתורים */
+/* הועבר מה-Inline: תומך בפריסת המנהל בצורה נקייה */
+.admin-actions-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 3px;
+    width: 100%;
+}
+
+.admin-buttons-row {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+}
+
+.admin-edit-btn-style {
+    background-color: #f59e0b !important;
+    color: white !important;
+    flex: 1;
+    padding: 4px !important;
+    margin-top: 0 !important;
+    text-align: center;
+}
+
+.admin-delete-btn-style {
+    flex: 1;
+    padding: 4px !important;
+    margin-top: 0 !important;
+    text-align: center;
+}
+
 .slot-span-btn {
     display: block;
     text-align: center;
@@ -129,14 +153,13 @@
     user-select: none;
     margin-top: 5px;
     transition: background 0.2s, transform 0.1s;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .slot-span-btn:active {
-    transform: scale(0.97); /* אפקט לחיצה פיזי קטן ומגניב */
+    transform: scale(0.97);
 }
 
-/* כפתור הרשמה מהירה (לקוח) */
 .register-btn {
     background-color: #0284c7;
     color: white;
@@ -146,7 +169,6 @@
     background-color: #0369a1;
 }
 
-/* כפתור ביטול רישום (לקוח) */
 .cancel-btn {
     background-color: #ef4444;
     color: white;
@@ -156,18 +178,16 @@
     background-color: #b91c1c;
 }
 
-/* כפתור מוגן לאורח (לא מחובר) */
 .guest-btn {
     background-color: #cbd5e1;
     color: #475569;
 }
 
-/* תגית סימון דקורטיבית למנהל המערכת */
 .slot-admin-badge {
     display: block;
-    background-color: #f1f5f9;
-    color: #475569;
-    border: 1px dashed #cbd5e1;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
     border-radius: 4px;
     padding: 2px 4px;
     font-size: 0.7rem;
@@ -176,7 +196,7 @@
 }
 
 /* ==========================================================================
-   5. ממשק ניהול ומערכת הטפסים (למנהל בלבד)
+   5. ממשק ניהול, טפסים ומצב לייב (למנהל בלבד)
    ========================================================================== */
 .admin-add-slot-toggle {
     background-color: #00b4d8;
@@ -187,118 +207,65 @@
     font-weight: bold;
     cursor: pointer;
     margin-top: 15px;
+    transition: background 0.2s;
 }
 
-.admin-slot-form {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 25px;
+.admin-add-slot-toggle:hover {
+    background-color: #0077b6;
+}
+
+/* הועבר מה-Inline: סדר ומראה נקי לקופסת מצב הלייב בבריכה */
+.admin-live-status-box {
+    margin-top: 20px;
+    padding: 15px;
     border-radius: 12px;
-    margin-bottom: 20px;
     text-align: right;
-}
-
-.form-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.form-row input, .form-row select {
-    padding: 10px;
     border: 1px solid #cbd5e1;
-    border-radius: 6px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8fafc;
 }
 
-.admin-submit-slot-btn {
-    background-color: #03045e;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
+.admin-live-status-box.active {
+    background: #f0fdf4;
+    border-color: #bbf7d0;
 }
 
-/* בועית טעינת נתונים עליונה */
-.schedule-loading-overlay {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: #03045e;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    z-index: 10;
+.admin-live-title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* אזור המכל המכיל את כפתורי ה-span לפעילויות */
-.tile-activity-actions {
-    margin-top: 6px;
-    width: 100%;
+.admin-live-title.active { color: #166534; }
+.admin-live-title.inactive { color: #475569; }
+
+.admin-live-content {
+    margin: 8px 0 0 0;
+    font-size: 1rem;
+    color: #15803d;
+    line-height: 1.6;
 }
 
-/* הגדרת בסיס לכל ה-spans הלחיצים שיתנהגו ככפתורים מקצועיים */
-.slot-span-btn {
-    display: block;
-    text-align: center;
-    padding: 4px 8px;
+.admin-live-badge-type {
+    background-color: #dcfce7;
+    padding: 2px 8px;
     border-radius: 4px;
-    font-size: 0.72rem;
+    color: #166534;
+}
+
+.admin-live-registered-count {
+    margin: 6px 0 0 0;
     font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    margin-top: 5px;
-    transition: background 0.2s, transform 0.1s;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.05rem;
 }
 
-.slot-span-btn:active {
-    transform: scale(0.97); /* אפקט לחיצה פיזי קטן */
+.admin-live-empty-text {
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+    color: #64748b;
+    font-style: italic;
 }
 
-/* כפתור הרשמה (כחול) */
-.register-btn {
-    background-color: #0284c7;
-    color: white;
-}
-.register-btn:hover {
-    background-color: #0369a1;
-}
-
-/* כפתור ביטול רישום (אדום) */
-.cancel-btn {
-    background-color: #ef4444;
-    color: white;
-}
-.cancel-btn:hover {
-    background-color: #b91c1c;
-}
-
-/* כפתור תצוגת אורח (אפור מוגן) */
-.guest-btn {
-    background-color: #cbd5e1;
-    color: #475569;
-}
-
-/* תגית זיהוי המנהל */
-.slot-admin-badge {
-    display: block;
-    background-color: #f1f5f9;
-    color: #475569;
-    border: 1px dashed #cbd5e1;
-    border-radius: 4px;
-    padding: 2px 4px;
-    font-size: 0.7rem;
-    text-align: center;
-    font-weight: bold;
-}
-/* עיצוב משופר ומיושר לשדות הטופס בקומפוננטה החדשה */
 .admin-slot-form {
     background: #ffffff;
     border: 2px solid #e2e8f0;
@@ -329,7 +296,7 @@
     border: 1px solid #cbd5e1;
     border-radius: 8px;
     font-size: 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     outline: none;
     background-color: #f8fafc;
 }
@@ -338,4 +305,67 @@
     border-color: #00b4d8;
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+}
+
+.admin-submit-slot-btn {
+    background-color: #03045e;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.admin-submit-slot-btn:hover {
+    background-color: #001233;
+}
+
+.schedule-loading-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #03045e;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   6. חוקי רספונסיביות והתאמה למובייל (שני גדלי מסך)
+   ========================================================================== */
+@media (max-width: 960px) {
+    .schedule-section {
+        padding: 40px 15px; /* צמצום שולי הדף */
+    }
+
+    /* הפיכת הלוח לגליל אופקית כדי שלא ימחץ במסכים קטנים */
+    .full-width-calendar-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+    }
+
+    .full-width-calendar-container .react-calendar {
+        min-width: 750px; /* שומר על רוחב קריא ומרווח של המשבצות */
+    }
+
+    .form-row {
+        flex-direction: column; /* העברת שדות הטופס למבנה אנכי נוח */
+        align-items: stretch;
+    }
+
+    .form-row > div {
+        width: 100%;
+    }
+
+    .admin-submit-slot-btn {
+        width: 100%;
+        text-align: center;
+    }
 }
