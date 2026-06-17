@@ -1,0 +1,341 @@
+
+/* ==========================================================================
+   1. הגדרות כלליות ומכלים עיקריים
+   ========================================================================== */
+.schedule-section {
+    padding: 60px 40px;
+    background-color: #ffffff;
+    direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* מיכל הלוח בפרישה רחבה ומרווחת */
+.full-width-calendar-container {
+    max-width: 1200px;
+    margin: 30px auto 0 auto;
+    position: relative;
+}
+
+/* ==========================================================================
+   2. דריסת עיצוב ברירת המחדל של ספריית react-calendar
+   ========================================================================== */
+.full-width-calendar-container .react-calendar {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: white;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    padding: 15px;
+}
+
+/* הגדלת גובה משבצות הימים ליצירת מראה של יומן חודשי אמיתי */
+.full-width-calendar-container .react-calendar__tile {
+    min-height: 120px; /* הגדלנו מעט ל-120px כדי שיהיה מקום נוח לכפתורי ה-span החדשים */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 8px !important;
+    border: 1px solid #f1f5f9 !important;
+    vertical-align: top;
+}
+
+/* מספר היום בפינה העליונה של המשבצת */
+.full-width-calendar-container .react-calendar__tile abbr {
+    font-weight: bold;
+    color: #4a5568;
+    margin-bottom: 6px;
+    font-size: 1rem;
+}
+
+/* גוון ירקרק עדין לציון היום הנוכחי (היום) */
+.full-width-calendar-container .react-calendar__tile--now {
+    background: #f0fdf4 !important; 
+}
+
+.full-width-calendar-container .react-calendar__tile--now abbr {
+    color: #166534;
+}
+
+/* גבול כהה סביב המשבצת שנבחרה - בלי להסתיר את תוכן הפעילות */
+.full-width-calendar-container .react-calendar__tile--active {
+    background: #f8fafc !important;
+    border: 2px solid #03045e !important;
+}
+
+/* ==========================================================================
+   3. עיצוב כרטיסי הפעילויות בתוך המשבצות
+   ========================================================================== */
+.tile-activities-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.tile-activity-item {
+    background-color: #e0f2fe; 
+    border-right: 3px solid #00b4d8; 
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    color: #0369a1;
+    font-weight: 700;
+    text-align: right;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+}
+
+.tile-activity-item:hover {
+    background-color: #03045e;
+    color: white;
+    border-right-color: #00b4d8;
+}
+
+.tile-activity-time {
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.8;
+    margin-bottom: 1px;
+}
+
+.tile-activity-text {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+/* ==========================================================================
+   4. מיכל ואלמנטי ה-span החכמים (המתנהגים ככפתורים)
+   ========================================================================== */
+.tile-activity-actions {
+    margin-top: 6px;
+    width: 100%;
+}
+
+/* עיצוב הבסיס לכל ה-spans הלחיצים כדי שייראו ויתנהגו כמו כפתורים */
+.slot-span-btn {
+    display: block;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 5px;
+    transition: background 0.2s, transform 0.1s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.slot-span-btn:active {
+    transform: scale(0.97); /* אפקט לחיצה פיזי קטן ומגניב */
+}
+
+/* כפתור הרשמה מהירה (לקוח) */
+.register-btn {
+    background-color: #0284c7;
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: #0369a1;
+}
+
+/* כפתור ביטול רישום (לקוח) */
+.cancel-btn {
+    background-color: #ef4444;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #b91c1c;
+}
+
+/* כפתור מוגן לאורח (לא מחובר) */
+.guest-btn {
+    background-color: #cbd5e1;
+    color: #475569;
+}
+
+/* תגית סימון דקורטיבית למנהל המערכת */
+.slot-admin-badge {
+    display: block;
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px dashed #cbd5e1;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-size: 0.7rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   5. ממשק ניהול ומערכת הטפסים (למנהל בלבד)
+   ========================================================================== */
+.admin-add-slot-toggle {
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.admin-slot-form {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-row input, .form-row select {
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-submit-slot-btn {
+    background-color: #03045e;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* בועית טעינת נתונים עליונה */
+.schedule-loading-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #03045e;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* אזור המכל המכיל את כפתורי ה-span לפעילויות */
+.tile-activity-actions {
+    margin-top: 6px;
+    width: 100%;
+}
+
+/* הגדרת בסיס לכל ה-spans הלחיצים שיתנהגו ככפתורים מקצועיים */
+.slot-span-btn {
+    display: block;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 5px;
+    transition: background 0.2s, transform 0.1s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.slot-span-btn:active {
+    transform: scale(0.97); /* אפקט לחיצה פיזי קטן */
+}
+
+/* כפתור הרשמה (כחול) */
+.register-btn {
+    background-color: #0284c7;
+    color: white;
+}
+.register-btn:hover {
+    background-color: #0369a1;
+}
+
+/* כפתור ביטול רישום (אדום) */
+.cancel-btn {
+    background-color: #ef4444;
+    color: white;
+}
+.cancel-btn:hover {
+    background-color: #b91c1c;
+}
+
+/* כפתור תצוגת אורח (אפור מוגן) */
+.guest-btn {
+    background-color: #cbd5e1;
+    color: #475569;
+}
+
+/* תגית זיהוי המנהל */
+.slot-admin-badge {
+    display: block;
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px dashed #cbd5e1;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-size: 0.7rem;
+    text-align: center;
+    font-weight: bold;
+}
+/* עיצוב משופר ומיושר לשדות הטופס בקומפוננטה החדשה */
+.admin-slot-form {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    padding: 25px;
+    border-radius: 14px;
+    margin: 20px 0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    text-align: right;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+
+.form-row > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.form-row input, .form-row select {
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    outline: none;
+    background-color: #f8fafc;
+}
+
+.form-row input:focus, .form-row select:focus {
+    border-color: #00b4d8;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
+}

@@ -1,0 +1,142 @@
+/* ==========================================================================
+   עיצוב רגיל למחשבים ומסכים גדולים (Desktop) - הקוד המקורי שלך ללא שינוי
+   ========================================================================== */
+
+.profile-container {
+    padding: 40px 20px;
+    direction: rtl;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.subscription-status-box {
+    background: #f8fafc;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 25px 0;
+    text-align: right;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.status-badge.active {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.renew-sub-btn {
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+.renew-sub-btn:hover {
+    background-color: #0077b6;
+}
+
+.history-section {
+    margin-top: 35px;
+    text-align: right;
+}
+
+/* מעטפת ברירת מחדל לטבלה */
+.table-wrapper {
+    width: 100%;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.history-table th, .history-table td {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    text-align: right;
+}
+
+.history-table th {
+    background-color: #03045e;
+    color: white;
+}
+
+.history-table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+.no-data {
+    color: #718096;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   התאמה רספונסיבית לטלפונים ניידים ומסכים קטנים (מתחת ל-768 פיקסלים)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 20px 12px; /* צמצום השוליים הכלליים כדי לנצל את רוחב מסך הטלפון */
+    }
+
+    .profile-card {
+        padding: 20px 15px; /* ריפוד קומפקטי יותר לכרטיסייה בנייד */
+        border-radius: 12px;
+    }
+
+    .subscription-status-box {
+        padding: 15px;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column; /* מסדר את הטקסט והכפתור אחד מתחת לשני */
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .renew-sub-btn {
+        width: 100%; /* כפתור חידוש המנוי נהיה רחב ומותאם ללחיצה קלה עם האגודל */
+        padding: 12px;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    /* קסם ה-CSS לטבלה רספונסיבית במובייל */
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto; /* מאפשר גלילה אופקית ימינה ושמאלה רק לטבלה אם היא רחבה מדי */
+        -webkit-overflow-scrolling: touch; /* גלילה חלקה וטבעית במסכי מגע של אייפון ואנדרואיד */
+        margin-top: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+    }
+
+    .history-table {
+        margin-top: 0; /* מבוטל כי המעטפת כבר מנהלת את המרווח */
+        min-width: 600px; /* מכריח את הטבלה לשמור על מבנה קריא ולא להימחץ לרוחב קטן מדי */
+    }
+
+    .history-table th, .history-table td {
+        padding: 10px 8px; /* הקטנה קלה של הריפוד בתוך התאים להתאמה למסך קטן */
+        font-size: 0.9rem;  /* התאמת גודל הגופן */
+    }
+}

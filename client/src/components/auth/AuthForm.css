@@ -1,0 +1,179 @@
+/* ==========================================================================
+   עיצוב רגיל למחשבים ומסכים גדולים (Desktop) - הקוד המקורי שלך ללא שינוי עיצובי
+   ========================================================================== */
+
+/* עיצוב מעטפת דף האימות - ממקם את הטופס בדיוק במרכז המסך */
+.auth-container {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(3, 4, 94, 0.06); /* הצללה עדינה עם גוון הלוגו */
+  border: 1px solid #edf2f7;
+  direction: rtl; /* כתיבה מלאה לעברית */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeInForm 0.6s ease-out;
+  box-sizing: border-box; /* מבטיח שה-Padding לא ירחיב את התיבה מעבר ל-450 פיקסלים */
+}
+
+/* כותרת הטופס */
+.auth-title {
+  text-align: center;
+  color: #03045e; /* כחול כהה יוקרתי מהלוגו */
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+}
+
+/* הודעת שגיאה במקרה של תקלה */
+.auth-error {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+/* קבוצת שדות קלט - רווח בין שדה לשדה */
+.form-group {
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* עיצוב התוויות של השדות (Labels) */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* עיצוב תיבות הקלט (Inputs) */
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d3748;
+  background-color: #f8fafc;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+/* אפקט פוקוס - כאשר המשתמש לוחץ על התיבה כדי להקליד */
+.form-group input:focus {
+  outline: none;
+  border-color: #00b4d8; /* הופך לתכלת של הלוגו */
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.1);
+}
+
+/* מצב שבו השדה חסום בזמן טעינה */
+.form-group input:disabled {
+  background-color: #edf2f7;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* כפתור הגשת הטופס (התחבר / בצע הרשמה) */
+.auth-submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #03045e; /* כחול כהה של ה-PoolHub */
+  color: #ffffff;
+  border: none;
+  border-radius: 25px; /* כפתור עגול ומודרני כמו ב-Navbar */
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(3, 4, 94, 0.2);
+  transition: all 0.2s ease;
+  margin-top: 10px;
+}
+
+.auth-submit-btn:hover {
+  background-color: #0077b6; /* משתנה לכחול בינוני במעבר עכבר */
+  transform: translateY(-1px);
+}
+
+.auth-submit-btn:disabled {
+  background-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* אזור מעבר מצבים בתחתית הטופס (החלפה בין הרשמה להתחברות) */
+.auth-toggle-mode {
+  text-align: center;
+  margin-top: 25px;
+  color: #718096;
+  font-size: 0.95rem;
+}
+
+.auth-toggle-mode span {
+  color: #00b4d8; /* הקישור בצבע תכלת מתוך הלוגו */
+  font-weight: 700;
+  cursor: pointer;
+  margin-right: 5px;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.auth-toggle-mode span:hover {
+  color: #03045e; /* הופך לכהה יותר במעבר עכבר */
+}
+
+/* אנימציית כניסה חלקה לטופס */
+@keyframes fadeInForm {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   התאמה לטלפונים ניידים ומסכים קטנים (מסכים קטנים מ-768 פיקסלים)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .auth-container {
+    width: 90%;          /* תופס 90% מרוחב המסך הנייד כדי להשאיר שוליים קטנים בצדדים */
+    margin: 30px auto;   /* מוריד את המרווח מלמעלה ומלמטה שיתאים למסך קטן */
+    padding: 24px;       /* מקטין את הריפוד הפנימי כדי לתת יותר מקום לשדות הקלט */
+    border-radius: 12px; /* עיגול פינות מעט עדין יותר שמתאים למסכי מובייל */
+  }
+
+  .auth-title {
+    font-size: 1.5rem;   /* הקטנה קלה של הכותרת שלא תתפוס חצי מסך בנייד */
+    margin-bottom: 20px; /* צמצום הרווח מתחת לכותרת */
+  }
+
+  .form-group {
+    margin-bottom: 16px; /* מרווח מעט יותר הדוק בין השדות */
+  }
+
+  .form-group input {
+    padding: 10px 14px;  /* התאמת גודל השדות ללחיצה קלה ונוחה במובייל */
+    font-size: 0.95rem;
+  }
+
+  .auth-submit-btn {
+    padding: 12px;       /* גובה כפתור מותאם לאגודל בנייד */
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,92 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background: #ffffff; /* שינוי ללבן נקי ומודרני שמתאים ללוגו */
+  color: #2d3748;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo-img {
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+/* קישורי המרכז החדשים של דף הבית */
+.navbar-internal-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.navbar-internal-links .nav-item {
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.navbar-internal-links .nav-item:hover {
+  color: #00b4d8; /* כחול בהיר מתוך הלוגו שלכן */
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item-link {
+  text-decoration: none;
+  color: #00b4d8;
+  font-weight: bold;
+}
+
+.nav-welcome {
+  font-weight: bold;
+  background: #03045e; /* כחול כהה עמוק מהלוגו */
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
+
+.nav-btn {
+  border: none;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.login-btn {
+  background: #03045e;
+  color: white;
+  box-shadow: 0 4px 10px rgba(3, 4, 94, 0.2);
+}
+
+.login-btn:hover {
+  background: #0077b6;
+}
+
+.logout-btn {
+  background: #d32f2f;
+  color: white;
+  border-radius: 6px;
+}
+
+.logout-btn:hover {
+  background: #b71c1c;
+}

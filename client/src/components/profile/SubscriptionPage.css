@@ -1,0 +1,77 @@
+.sub-page-container {
+    padding: 60px 20px;
+    direction: rtl;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.sub-page-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 4px 35px 35px 35px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    text-align: right;
+}
+
+.sub-alert-banner {
+    background-color: #fff7ed;
+    border-right: 4px solid #ea580c;
+    color: #9a3412;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.sub-details-section {
+    background: #f8fafc;
+    border: 1px solid #edf2f7;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+    line-height: 2;
+}
+
+.sub-status-badge {
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-right: 8px;
+}
+
+.sub-status-badge.active {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.sub-status-badge.expired {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.sub-action-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.sub-action-btn.purchase { background-color: #00b4d8; }
+.sub-action-btn.purchase:hover { background-color: #0077b6; }
+.sub-action-btn.cancel { background-color: #ef4444; }
+.sub-action-btn.back { width: 100%; }
+
+.payment-details-box {
+    background-color: #f1f5f9;
+    border: 1px dashed #cbd5e1;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
